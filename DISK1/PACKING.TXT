@@ -1,0 +1,237 @@
+	Packing List for Microsoft Macro Assembler Version 6.11
+	Copyright (C) Microsoft Corp. 1986, 1993. All rights reserved.
+
+
+
+DISK 1 : Setup disk
+
+ Files                        Description
+ -----                        -----------
+
+BIN\CV.EXE                    MS-DOS CodeView debugger for MS-DOS
+BIN\CV.ICO                    MS-DOS CodeView Icon
+BIN\CVPACK.EXE                DOS CV4 information optimization utility
+BIN\CVW.EXE                   CodeView for Windows - Single Monitor
+BIN\CVW1.386                  CodeView for Windows Driver
+BIN\CVW4.EXE                  CodeView for Windows
+BIN\DMW0.DLL                  Debugging monitor
+BIN\DOSXNT.386                MS-DOS extender component for Windows
+BIN\DOSXNT.EXE                MS-DOS extender component
+BIN\EED1CXX.DLL               Expression evaluator for MS-DOS C/C++
+BIN\EEW0CXX.DLL               Windows expression evaluator for C/C++
+BIN\EMD1D1.DLL                Execution model for MS-DOS to MS-DOS
+BIN\ML.ERR                    Assembler error file
+BIN\ML.EXE                    Assembler executable
+
+CV.TXT                        CodeView configuration doc
+DECOMP.EXE                    Standalone decompression program
+ERRMSG.TXT                    Microsoft MS-DOS Extender Run-Time Errors
+PACKING.TXT                   List of disk contents
+PENTIUM.TXT                   Information for the Intel (R) Pentium (TM) processor
+README.TXT                    Documentation for MASM 6.11
+SETUP.EXE                     Setup program
+SETUP.INF                     Setup program information file
+SUPPORT.TXT                   Documentation about Microsoft Support Services
+
+
+DISK 2 : Disk 2
+
+ Files                        Description
+ -----                        -----------
+
+BIN\BSCMAKE.EXE               Browse database creation utility
+BIN\BSCMAKEV.EXE              Virtual memory version of BSCMAKE
+BIN\CREF.DOC                  Cross-Reference Utility Doc
+BIN\CREF.EXE                  Cross-Reference Utility
+BIN\EMD1W0.DLL                MS-DOS to WIN3 Execution Model
+BIN\EMM386.EXE                Expanded memory manager
+BIN\EMW0W0.DLL                Windows to Windows execution model
+BIN\EXEHDR.EXE                .EXE file modification utility
+BIN\EXP.EXE                   File expunge program
+BIN\H2INC.ERR                 h2inc.exe error message file
+BIN\H2INC.EXE                 C-header-file to MASM-include-file utility
+BIN\HELPMAKE.EXE              Help File Maintenance Utility
+BIN\HIMEM.SYS                 Microsoft XMS manager
+BIN\IMPLIB.EXE                Import library creation utility
+BIN\LIB.EXE                   Library maintenance utility
+BIN\LINK.EXE                  Linker
+
+
+DISK 3 : Disk 3
+
+ Files                        Description
+ -----                        -----------
+
+BIN\MASM.EXE                  5.1-compatible command-line driver
+BIN\MASM.GRP                  Windows group file
+BIN\MOUSE.COM                 Mouse driver
+BIN\MSD.EXE                   Configuration reporter
+BIN\MSD.TXT                   Configuration reporter doc
+BIN\NEW-SYS.INI               SYSTEM.INI settings
+BIN\NMAKE.EXE                 MS-DOS extended driver for NMAKER
+BIN\NMAKER.EXE                Real-mode program maintenance utility
+BIN\OEM08.FON                 Font
+BIN\OEM10.FON                 Font
+BIN\PWB.EXE                   MS-DOS Programmer's WorkBench
+BIN\PWB.ICO                   Icon for PWB
+BIN\PWB.PIF                   PIF File for PWB
+BIN\PWBBASIC.XXT              BASIC extension for PWB
+BIN\PWBC.XXT                  C extension for PWB
+BIN\PWBFORT.XXT               FORTRAN extension for PWB
+BIN\PWBHELP.MXT               Help extension for PWB
+BIN\PWBMASM.MXT               MASM extension for PWB
+BIN\PWBPROF.XXT               Profiler extension for PWB
+BIN\PWBRMAKE.EXE              BSCMAKE compatibility driver
+BIN\PWBROWSE.MXT              Browser extension for PWB
+BIN\PWBUTILS.MXT              Utilities for PWB
+BIN\QH.EXE                    MS-DOS Quick Help program
+BIN\QH.ICO                    QuickHelp Icon
+BIN\RAMDRIVE.SYS              Virtual RAM disk drive
+BIN\RC.BAT                    Warning of missing RC.EXE
+BIN\RCVCOM.EXE                MS-DOS Serial Debug Monitor
+BIN\RCVWCOM.EXE               Windows serial remote debugging monitor
+BIN\RM.EXE                    File deletion program
+BIN\SBRPACK.EXE               Browse information utility
+BIN\SHD1.DLL                  Symbol handler for MS-DOS
+BIN\SHW0.DLL                  Windows hosted symbol handler
+BIN\SMARTDRV.DOC              Disk cache doc
+BIN\SMARTDRV.EXE              Disk cache
+BIN\TLD1COM.DLL               MS-DOS Serial Transport Layer
+
+
+DISK 4 : Disk 4
+
+ Files                        Description
+ -----                        -----------
+
+BIN\TLD1LOC.DLL               Local transport layer for MS-DOS
+BIN\TLW0LOC.DLL               Windows local transport layer
+BIN\TOOLHELP.DLL              Windows debugging support
+BIN\UNDEL.EXE                 File restore program
+BIN\VMB.386                   Windows Spawn Driver
+BIN\WX.EXE                    Windows Spawner
+BIN\WXSRVR.EXE                Windows Spawn Server
+
+HELP\CV.HLP                   Help for CodeView
+HELP\ML.HLP                   Help for Assembler command line
+
+INCLUDE\ASMTHRED.INC          Sample file - 32-bit code
+INCLUDE\BIOS.INC              BIOS Macros
+INCLUDE\CMACROS.INC           MASM 6.11 compatible CMACROS.INC
+INCLUDE\CMACROS.NEW           CMACROS.INC w/MASM 6.x features
+INCLUDE\DOS.INC               DOS Macros
+INCLUDE\MACROS.INC            Miscellaneous macros
+INCLUDE\PROLOGUE.INC          Prologues and Epilogues
+INCLUDE\THREADS.H             Sample file - 32-bit code
+INCLUDE\WIN.INC               Windows include file
+
+INIT\BRIEF.INI                Brief emulation macros for PWB
+INIT\TOOLS.PRE                Sample macros for PWB
+
+LIB\APPENTRY.ASM              Windows app startup code
+LIB\CNOCRTDW.LIB              Windows DLL Startup Library
+LIB\DLLENTRY.ASM              Windows DLL startup code
+LIB\LIBW.LIB                  Windows API Import Library
+LIB\LNOCRTDW.LIB              Windows DLL Startup Library
+LIB\MNOCRTDW.LIB              Windows DLL Startup Library
+LIB\SNOCRTDW.LIB              Windows DLL Startup Library
+
+SAMPLES\DEMOS\COMMON.ASM      Sample file - Miscellaneous demos
+SAMPLES\DEMOS\DEMO.H          Sample file - Miscellaneous demos
+SAMPLES\DEMOS\DEMO.INC        Sample file - Miscellaneous demos
+SAMPLES\DEMOS\FILE.ASM        Sample file - Miscellaneous demos
+SAMPLES\DEMOS\FILEDEMO.C      Sample file - Miscellaneous demos
+SAMPLES\DEMOS\FILEDEMO.MAK    Sample file - Miscellaneous demos
+SAMPLES\DEMOS\MATH.ASM        Sample file - Miscellaneous demos
+SAMPLES\DEMOS\MATHDEMO.C      Sample file - Miscellaneous demos
+SAMPLES\DEMOS\MATHDEMO.MAK    Sample file - Miscellaneous demos
+SAMPLES\DEMOS\MISC.ASM        Sample file - Miscellaneous demos
+SAMPLES\DEMOS\MISCDEMO.ASM    Sample file - Miscellaneous demos
+SAMPLES\DEMOS\MISCDEMO.MAK    Sample file - Miscellaneous demos
+
+SAMPLES\DOSDEV\ATOMS.ASM      Sample file - DOS Device driver
+SAMPLES\DOSDEV\ATOMS.TXT      Sample file - DOS Device driver
+SAMPLES\DOSDEV\ATOMTEST.ASM   Sample file - DOS Device driver
+SAMPLES\DOSDEV\CTEST.C        Sample file - DOS Device driver
+SAMPLES\DOSDEV\MAKEATOM.BAT   Sample file - DOS Device driver
+
+SAMPLES\MIXED\BASIC.ASM       Sample file - Mixed language
+SAMPLES\MIXED\BASMAIN.BAS     Sample file - Mixed language
+SAMPLES\MIXED\C.ASM           Sample file - Mixed language
+SAMPLES\MIXED\CMAIN.C         Sample file - Mixed language
+SAMPLES\MIXED\FMAIN.FOR       Sample file - Mixed language
+SAMPLES\MIXED\FORTRAN.ASM     Sample file - Mixed language
+
+SAMPLES\NTSAMPLE\HELLO\HELLO.ASM  Sample file - 32-bit code
+SAMPLES\NTSAMPLE\HELLO\HELLO.MAK  Sample file - 32-bit code
+
+SAMPLES\NTSAMPLE\NTDLL\ASMDLL.ASM  Sample file - 32-bit code
+SAMPLES\NTSAMPLE\NTDLL\ASMDLL.DEF  Sample file - 32-bit code
+SAMPLES\NTSAMPLE\NTDLL\CASMDLL.MAK  Sample file - 32-bit code
+SAMPLES\NTSAMPLE\NTDLL\CMAIN.C  Sample file - 32-bit code
+
+SAMPLES\NTSAMPLE\NTSAMPLE.TXT  Samples text file - 32-bit code
+
+SAMPLES\NTSAMPLE\SZSEARCH\MAIN.C  Sample file - 32-bit code
+SAMPLES\NTSAMPLE\SZSEARCH\MAIN.MAK  Sample file - 32-bit code
+SAMPLES\NTSAMPLE\SZSEARCH\SZSEARCH.ASM  Sample file - 32-bit code
+
+SAMPLES\NTSAMPLE\THREADS\ASMTHRED.ASM  Sample file - 32-bit code
+SAMPLES\NTSAMPLE\THREADS\THREADS.C  Sample file - 32-bit code
+SAMPLES\NTSAMPLE\THREADS\THREADS.MAK  Sample file - 32-bit code
+
+SAMPLES\PWBTUTOR\EXTRA.TXT    Sample file - PWB Tutorial
+SAMPLES\PWBTUTOR\RND.ASM      Sample file - PWB Tutorial
+
+SAMPLES\SAMPLES.TXT           Sample file documentation
+
+SAMPLES\SHOW\PAGER.ASM        Sample file - Text file browser
+SAMPLES\SHOW\SHOW.ASM         Sample file - Text file browser
+SAMPLES\SHOW\SHOW.INC         Sample file - Text file browser
+SAMPLES\SHOW\SHOW.MAK         Sample file - Text file browser
+SAMPLES\SHOW\SHOWUTIL.ASM     Sample file - Text file browser
+
+SAMPLES\TSR\ALARM.ASM         Sample file - TSR
+SAMPLES\TSR\ALARM.MAK         Sample file - TSR
+SAMPLES\TSR\BELL.C            Sample file - TSR
+SAMPLES\TSR\BELL.MAK          Sample file - TSR
+SAMPLES\TSR\HANDLERS.ASM      Sample file - TSR
+SAMPLES\TSR\INSTALL.ASM       Sample file - TSR
+SAMPLES\TSR\SNAP.ASM          Sample file - TSR
+SAMPLES\TSR\SNAP.MAK          Sample file - TSR
+SAMPLES\TSR\TSR.H             Sample file - TSR
+SAMPLES\TSR\TSR.INC           Sample file - TSR
+
+SAMPLES\WINCLOCK\APPENTRY.ASM  Windows app startup code
+SAMPLES\WINCLOCK\WINCLOCK.ASM  Sample file - Windows clock
+SAMPLES\WINCLOCK\WINCLOCK.DEF  Sample file - Windows clock
+SAMPLES\WINCLOCK\WINCLOCK.ICO  Sample file - Windows clock
+SAMPLES\WINCLOCK\WINCLOCK.MAK  Sample file - Windows clock
+SAMPLES\WINCLOCK\WINCLOCK.RC  Sample file - Windows clock
+
+SAMPLES\WINDLL\APPENTRY.ASM   Windows app startup code
+SAMPLES\WINDLL\DLL.INC        Sample file - Windows DLL
+SAMPLES\WINDLL\DLLENTRY.ASM   Windows DLL startup code
+SAMPLES\WINDLL\SYSDATA.ASM    Sample file - Windows DLL
+SAMPLES\WINDLL\SYSDATA.DEF    Sample file - Windows DLL
+SAMPLES\WINDLL\SYSDATA.EXE    Sample file - Windows DLL
+SAMPLES\WINDLL\SYSDATA.H      Sample file - Windows DLL
+SAMPLES\WINDLL\SYSDATA.ICO    Sample file - Windows DLL
+SAMPLES\WINDLL\SYSDATA.MAK    Sample file - Windows DLL
+SAMPLES\WINDLL\SYSDATA.RC     Sample file - Windows DLL
+SAMPLES\WINDLL\SYSINFO.ASM    Sample file - Windows DLL
+SAMPLES\WINDLL\SYSINFO.DEF    Sample file - Windows DLL
+SAMPLES\WINDLL\SYSINFO.MAK    Sample file - Windows DLL
+
+
+DISK 5 : Disk 5
+
+ Files                        Description
+ -----                        -----------
+
+HELP\ADVISOR.HLP              Help for Microsoft Advisor
+HELP\ALANG.HLP                Help for Assembly language
+HELP\LINK.HLP                 Help for Linker
+HELP\PWB.HLP                  Help for PWB
+HELP\QH.HLP                   Help for Microsoft QuickHelp
+HELP\UTILS.HLP                Help for Utilities

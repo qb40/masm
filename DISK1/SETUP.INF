@@ -1,0 +1,1711 @@
+; INFORMATION FILE FOR MASM 6.1a SETUP
+;
+;         *** 3-1/2" LD (720kb) Disk Set ***
+;
+[macro]
+; default directory names (must end with \)
+DEFDIRBASE     = "C:\MASM611\"
+DEFDIRBIN      = "BIN\"
+DEFDIRBINB     = "BINR\"
+DEFDIRLIB      = "LIB\"
+DEFDIRINCLUDE  = "INCLUDE\"
+DEFDIRINIT     = "INIT\"
+DEFDIRHELP     = "HELP\"
+DEFDIRSAMPLES  = "SAMPLES\"
+DEFDIRTMP      = "TMP\"
+
+PACKINGLIST = "PACKING.TXT"
+READMEFILE  = "README.TXT"
+
+COPYRIGHT   = "Copyright (C) Microsoft Corp. 1986, 1993. All rights reserved."
+
+; filename of linker, and backup name used during version checking
+LINK_NAME      = "link.exe"
+TEMP_LINK_NAME = "$$$link.tmp"
+
+
+; ************** lists ********************
+
+[list sdisks]
+0:dos,     "your DOS SYSTEM disk"
+1:masm1,   "Setup disk"
+2:masm2,   "Disk 2"
+3:masm3,   "Disk 3"
+4:masm4,   "Disk 4"
+5:masm5,   "Disk 5"
+6:masm6,   "Disk 6"
+7:masm7,   "Disk 7"
+
+[list netsetup]
+0:x,  " "
+1:x,  "..\DISK1"
+2:x,  "..\DISK2"
+3:x,  "..\DISK3"
+4:x,  "..\DISK4"
+5:x,  "..\DISK5"
+6:x,  "..\DISK6"
+7:x,  "..\DISK7"
+
+; dummy list, never used
+[list ddisks]
+1:x,  "the destination disk, tape, or cartridge"
+
+
+; ****** FILE LAYOUT ******
+;
+;  disk#: path [, "descr"][, size = xxx][, dest = x][, actions]
+;
+;     action codes: rename, append, noreplace, ignoreerr (default; synonym
+;           is "nonvital"), vital, timestamp, nocopy
+;     dest= B(BinB), N(bin), I(Include), T(Init),
+;           H(Help), L(Lib), S(Sample programs), E(tEmp directory),
+;           O(RoOt)
+;        [dest setting gets propagated down a list, but not across lists]
+;
+
+
+[list  copy_always  1]
+1: packing.txt,            DEST=O, comment="List of disk contents",                              NOCOPY
+1: pentium.txt,                    comment="Information for the Intel (R) Pentium (TM) processor",         size=37901
+1: errmsg.txt,                     comment="Microsoft MS-DOS Extender Run-Time Errors",                    size=9486
+1: readme.txt,                     comment="Documentation for MASM 6.11",                                  size=28692
+1: support.txt,			   comment="Documentation about Microsoft Support Services",		   size=6981
+1: setup.inf,                      comment="Setup program information file",                     NOCOPY
+1: setup.exe,                      comment="Setup program",                                      NOCOPY
+
+1: bin\ml.err,             DEST=N, comment="Assembler error file",                                 ROOT, size=9287
+1: bin\ml.exe,                     comment="Assembler executable",                                 ROOT, size=388608
+2: bin\cref.doc,                   comment="Cross-Reference Utility Doc",                          ROOT, size=10169
+2: bin\cref.exe,                   comment="Cross-Reference Utility",                              ROOT, size=66560
+2: bin\h2inc.err,                  comment="h2inc.exe error message file",                         ROOT, size=21880
+2: bin\h2inc.exe,                  comment="C-header-file to MASM-include-file utility",           ROOT, size=248832
+
+[list dos_extended 1]
+1: bin\dosxnt.exe,         DEST=N, comment="MS-DOS extender component",                            ROOT, size=393942
+3: bin\nmake.exe,                  comment="MS-DOS extended driver for NMAKER",         TIMESTAMP, ROOT, size=45568
+3: bin\nmaker.exe,                 comment="Real-mode program maintenance utility",     TIMESTAMP, ROOT, size=86809
+
+
+[list dos_extended_windows 1]
+1: bin\dosxnt.386,         DEST=N, comment="MS-DOS extender component for Windows",                ROOT, size=9343
+
+
+[list  if_dos  1]
+2: bin\emm386.exe,         DEST=N, comment="Expanded memory manager",                   TIMESTAMP, ROOT, size=110174
+2: bin\exehdr.exe,                 comment=".EXE file modification utility",            TIMESTAMP, ROOT, size=39377
+2: bin\exp.exe,                    comment="File expunge program",                      TIMESTAMP, ROOT, size=18757
+2: bin\himem.sys,                  comment="Microsoft XMS manager",                     TIMESTAMP, ROOT, size=13824
+2: bin\implib.exe,                 comment="Import library creation utility",           TIMESTAMP, ROOT, size=42581
+2: bin\lib.exe,                    comment="Library maintenance utility",               TIMESTAMP, ROOT, size=59089
+2: bin\link.exe,                   comment="Linker",                                               ROOT, size=202912
+3: bin\msd.exe,                    comment="Configuration reporter",                    TIMESTAMP, ROOT, size=155538
+3: bin\msd.txt,                    comment="Configuration reporter doc",                TIMESTAMP, ROOT, size=9003
+3: bin\ramdrive.sys,               comment="Virtual RAM disk drive",                    TIMESTAMP, ROOT, size=5873
+3: bin\rm.exe,                     comment="File deletion program",                     TIMESTAMP, ROOT, size=14799
+3: bin\smartdrv.exe,               comment="Disk cache",                                TIMESTAMP, ROOT, size=43609
+3: bin\smartdrv.doc,               comment="Disk cache doc",                            TIMESTAMP, ROOT, size=15017
+4: bin\undel.exe,                  comment="File restore program",                      TIMESTAMP, ROOT, size=19519
+
+
+1: cv.txt,                 DEST=O, comment="CodeView configuration doc",                                 size=13917
+1: bin\cv.exe,             DEST=N, comment="MS-DOS CodeView debugger for MS-DOS",       TIMESTAMP, ROOT, size=468512
+1: bin\cvpack.exe,                 comment="DOS CV4 information optimization utility",  TIMESTAMP, ROOT, size=127520
+1: bin\eed1cxx.dll,                comment="Expression evaluator for MS-DOS C/C++",     TIMESTAMP, ROOT, size=105722
+1: bin\emd1d1.dll,                 comment="Execution model for MS-DOS to MS-DOS",      TIMESTAMP, ROOT, size=69322
+3: bin\rcvcom.exe,                 comment="MS-DOS Serial Debug Monitor",               TIMESTAMP, ROOT, size=92096
+3: bin\shd1.dll,                   comment="Symbol handler for MS-DOS",                 TIMESTAMP, ROOT, size=42804
+3: bin\tld1com.dll,                comment="MS-DOS Serial Transport Layer",             TIMESTAMP, ROOT, size=22126
+4: bin\tld1loc.dll,                comment="Local transport layer for MS-DOS",          TIMESTAMP, ROOT, size=16692
+1: bin\dmw0.dll,                   comment="Debugging monitor",                         TIMESTAMP, ROOT, size=45856
+
+4: include\bios.inc,       DEST=I, comment="BIOS Macros",                                          ROOT, size=9440
+4: include\cmacros.inc,            comment="MASM 6.11 compatible CMACROS.INC",                     ROOT, size=45473
+4: include\cmacros.new,            comment="CMACROS.INC w/MASM 6.x features",                      ROOT, size=37679
+4: include\dos.inc,                comment="DOS Macros",                                           ROOT, size=41258
+4: include\macros.inc,             comment="Miscellaneous macros",                                 ROOT, size=6166
+4: include\prologue.inc,           comment="Prologues and Epilogues",                              ROOT, size=9181
+
+
+[list  if_windows 1]
+3: bin\new-sys.ini,        DEST=N, comment="SYSTEM.INI settings",                                  ROOT, size=645
+3: bin\masm.grp,                   comment="Windows group file",                                   ROOT, size=6176
+
+1: bin\cv.ico,             DEST=N, comment="MS-DOS CodeView Icon",                      TIMESTAMP, ROOT, size=1086
+1: bin\cvw.exe,                    comment="CodeView for Windows - Single Monitor",     TIMESTAMP, ROOT, size=63488
+1: bin\cvw1.386,                   comment="CodeView for Windows Driver",               TIMESTAMP, ROOT, size=5194
+1: bin\cvw4.exe,                   comment="CodeView for Windows",                      TIMESTAMP, ROOT, size=410112
+1: bin\eew0cxx.dll,                comment="Windows expression evaluator for C/C++",    TIMESTAMP, ROOT, size=105073
+2: bin\emd1w0.dll,                 comment="MS-DOS to WIN3 Execution Model",            TIMESTAMP, ROOT, size=74028
+2: bin\emw0w0.dll,                 comment="Windows to Windows execution model",        TIMESTAMP, ROOT, size=74432
+3: bin\oem08.fon,                  comment="Font",                                      TIMESTAMP, ROOT, size=4752
+3: bin\oem10.fon,                  comment="Font",                                      TIMESTAMP, ROOT, size=5264
+3: bin\rcvwcom.exe,                comment="Windows serial remote debugging monitor",   TIMESTAMP, ROOT, size=34464
+3: bin\shw0.dll,                   comment="Windows hosted symbol handler",             TIMESTAMP, ROOT, size=42720
+4: bin\tlw0loc.dll,                comment="Windows local transport layer",             TIMESTAMP, ROOT, size=46400
+4: bin\toolhelp.dll,               comment="Windows debugging support",                 TIMESTAMP, ROOT, size=14128
+
+4: include\win.inc,        DEST=I, comment="Windows include file",                                 ROOT, size=144585
+
+4: lib\libw.lib,           DEST=L, comment="Windows API Import Library",                TIMESTAMP, ROOT, size=80351
+4: lib\cnocrtdw.lib,               comment="Windows DLL Startup Library",               TIMESTAMP, ROOT, size=2071
+4: lib\lnocrtdw.lib,               comment="Windows DLL Startup Library",               TIMESTAMP, ROOT, size=2071
+4: lib\mnocrtdw.lib,               comment="Windows DLL Startup Library",               TIMESTAMP, ROOT, size=2071
+4: lib\snocrtdw.lib,               comment="Windows DLL Startup Library",               TIMESTAMP, ROOT, size=2071
+4: lib\appentry.asm,               comment="Windows app startup code",                             ROOT, size=3927
+4: lib\dllentry.asm,               comment="Windows DLL startup code",                             ROOT, size=1633
+4: samples\winclock\appentry.asm,  DEST=S, comment="Windows app startup code", "winclock\appentry.asm", RENAME, size=3927
+4: samples\windll\appentry.asm,            comment="Windows app startup code", "windll\appentry.asm",   RENAME, size=3927
+4: samples\windll\dllentry.asm,            comment="Windows DLL startup code", "windll\dllentry.asm",   RENAME, size=1633
+
+
+[list  if_no_rc 1]
+3: bin\rc.bat,             DEST=N, comment="Warning of missing RC.EXE",                            ROOT, size=399
+
+[list  if_compat_driver  1]
+3: bin\masm.exe,           DEST=N, comment="5.1-compatible command-line driver",                   ROOT, size=49152
+
+[list  if_pwb  1]
+3: bin\pwb.exe,            DEST=N, comment="MS-DOS Programmer's WorkBench",             TIMESTAMP, ROOT, size=558432
+3: bin\pwbhelp.mxt,                comment="Help extension for PWB",                    TIMESTAMP, ROOT, size=47656
+3: bin\pwbmasm.mxt,                comment="MASM extension for PWB",                               ROOT, size=20660
+3: bin\pwbrowse.mxt,               comment="Browser extension for PWB",                 TIMESTAMP, ROOT, size=113856
+3: bin\pwbutils.mxt,               comment="Utilities for PWB",                         TIMESTAMP, ROOT, size=31582
+3: bin\pwbc.xxt,                   comment="C extension for PWB",                       TIMESTAMP, ROOT, size=44748
+3: bin\pwbbasic.xxt,               comment="BASIC extension for PWB",                   TIMESTAMP, ROOT, size=19200
+3: bin\pwbfort.xxt,                comment="FORTRAN extension for PWB",                 TIMESTAMP, ROOT, size=25150
+3: bin\pwbprof.xxt,                comment="Profiler extension for PWB",                TIMESTAMP, ROOT, size=53416
+3: bin\sbrpack.exe,                comment="Browse information utility",                TIMESTAMP, ROOT, size=17869
+2: bin\bscmake.exe,                comment="Browse database creation utility",          TIMESTAMP, ROOT, size=123296
+2: bin\bscmakev.exe,               comment="Virtual memory version of BSCMAKE",         TIMESTAMP, ROOT, size=127520
+3: bin\pwbrmake.exe,               comment="BSCMAKE compatibility driver",              TIMESTAMP, ROOT, size=7983
+4: init\tools.pre,         DEST=T, comment="Sample macros for PWB",                     TIMESTAMP, ROOT, size=22567
+
+[list  if_brief  1]
+4: init\brief.ini,         DEST=T, comment="Brief emulation macros for PWB", "tools.ini", APPEND, TIMESTAMP, size=9986
+
+[list  if_docs  1]
+5: help\advisor.hlp,       DEST=H, comment="Help for Microsoft Advisor",                TIMESTAMP, ROOT, size=26788
+4: help\cv.hlp,                    comment="Help for CodeView",                         TIMESTAMP, ROOT, size=168185
+5: help\link.hlp,                  comment="Help for Linker",                           TIMESTAMP, ROOT, size=168516
+5: help\utils.hlp,                 comment="Help for Utilities",                        TIMESTAMP, ROOT, size=191198
+
+[list  if_docs_and_nt  1]
+3: bin\qh.exe,             DEST=N, comment="MS-DOS Quick Help program",                 TIMESTAMP, ROOT, size=70065
+2: bin\helpmake.exe,               comment="Help File Maintenance Utility",             TIMESTAMP, ROOT, size=55585
+
+5: help\alang.hlp,         DEST=H, comment="Help for Assembly language",                           ROOT, size=716134
+4: help\ml.hlp,                    comment="Help for Assembler command line",                      ROOT, size=169458
+5: help\qh.hlp,                    comment="Help for Microsoft QuickHelp",              TIMESTAMP, ROOT, size=25205
+
+
+[list if_docs_and_windows 1]
+3: bin\qh.ico,             DEST=N, comment="QuickHelp Icon",                            TIMESTAMP, ROOT, size=1086
+
+[list if_pwb_and_docs 1]
+5: help\pwb.hlp,           DEST=H, comment="Help for PWB",                              TIMESTAMP, ROOT, size=576442
+
+[list if_pwb_and_windows 1]
+3: bin\pwb.ico,            DEST=N, comment="Icon for PWB",                              TIMESTAMP, ROOT, size=1086
+3: bin\pwb.pif,                    comment="PIF File for PWB",                          TIMESTAMP, ROOT, size=545
+4: bin\wx.exe,                     comment="Windows Spawner",                           TIMESTAMP, ROOT, size=13077
+4: bin\wxsrvr.exe,                 comment="Windows Spawn Server",                      TIMESTAMP, ROOT, size=17920
+4: bin\vmb.386,                    comment="Windows Spawn Driver",                      TIMESTAMP, ROOT, size=9273
+
+[list  if_mouse  1]
+3: bin\mouse.com,          DEST=N, comment="Mouse driver",                              TIMESTAMP, ROOT, size=56425
+
+[list  if_samples  1]
+4: samples\samples.txt,    DEST=S, comment="Sample file documentation",                            ROOT, size=4321
+4: samples\demos\common.asm,       comment="Sample file - Miscellaneous demos",  "demos\common.asm",      RENAME, size=15612
+4: samples\demos\demo.h,           comment=^,                                    "demos\demo.h",          RENAME, size=6240
+4: samples\demos\demo.inc,         comment=^,                                    "demos\demo.inc",        RENAME, size=10391
+4: samples\demos\file.asm,         comment=^,                                    "demos\file.asm",        RENAME, size=37743
+4: samples\demos\filedemo.c,       comment=^,                                    "demos\filedemo.c",      RENAME, size=18789
+4: samples\demos\filedemo.mak,     comment=^,                                    "demos\filedemo.mak",    RENAME, size=2069
+4: samples\demos\math.asm,         comment=^,                                    "demos\math.asm",        RENAME, size=14433
+4: samples\demos\mathdemo.c,       comment=^,                                    "demos\mathdemo.c",      RENAME, size=14646
+4: samples\demos\mathdemo.mak,     comment=^,                                    "demos\mathdemo.mak",    RENAME, size=2262
+4: samples\demos\misc.asm,         comment=^,                                    "demos\misc.asm",        RENAME, size=39158
+4: samples\demos\miscdemo.asm,     comment=^,                                    "demos\miscdemo.asm",    RENAME, size=37731
+4: samples\demos\miscdemo.mak,     comment=^,                                    "demos\miscdemo.mak",    RENAME, size=1819
+4: samples\mixed\basic.asm,        comment="Sample file - Mixed language",       "mixed\basic.asm",       RENAME, size=559
+4: samples\mixed\basmain.bas,      comment=^,                                    "mixed\basmain.bas",     RENAME, size=220
+4: samples\mixed\c.asm,            comment=^,                                    "mixed\c.asm",           RENAME, size=451
+4: samples\mixed\cmain.c,          comment=^,                                    "mixed\cmain.c",         RENAME, size=234
+4: samples\mixed\fmain.for,        comment=^,                                    "mixed\fmain.for",       RENAME, size=338
+4: samples\mixed\fortran.asm,      comment=^,                                    "mixed\fortran.asm",     RENAME, size=440
+4: samples\show\pager.asm,         comment="Sample file - Text file browser",    "show\pager.asm",        RENAME, size=10156
+4: samples\show\show.inc,          comment=^,                                    "show\show.inc",         RENAME, size=1444
+4: samples\show\show.asm,          comment=^,                                    "show\show.asm",         RENAME, size=15700
+4: samples\show\show.mak,          comment=^,                                    "show\show.mak",         RENAME, size=2984
+4: samples\show\showutil.asm,      comment=^,                                    "show\showutil.asm",     RENAME, size=7514
+4: samples\dosdev\atoms.asm,       comment="Sample file - DOS Device driver",    "dosdev\atoms.asm",      RENAME, size=32902
+4: samples\dosdev\atoms.txt,       comment=^,                                    "dosdev\atoms.txt",      RENAME, size=7734
+4: samples\dosdev\atomtest.asm,    comment=^,                                    "dosdev\atomtest.asm",   RENAME, size=7301
+4: samples\dosdev\ctest.c,         comment=^,                                    "dosdev\ctest.c",        RENAME, size=6055
+4: samples\dosdev\makeatom.bat,    comment=^,                                    "dosdev\makeatom.bat",   RENAME, size=130
+4: samples\pwbtutor\rnd.asm,       comment="Sample file - PWB Tutorial",         "pwbtutor\rnd.asm",      RENAME, size=8685
+4: samples\pwbtutor\extra.txt,     comment=^,                                    "pwbtutor\extra.txt",    RENAME, size=966
+4: samples\tsr\alarm.asm,          comment="Sample file - TSR",                  "tsr\alarm.asm",         RENAME, size=9916
+4: samples\tsr\alarm.mak,          comment=^,                                    "tsr\alarm.mak",         RENAME, size=1778
+4: samples\tsr\bell.c,             comment=^,                                    "tsr\bell.c",            RENAME, size=7122
+4: samples\tsr\bell.mak,           comment=^,                                    "tsr\bell.mak",          RENAME, size=2060
+4: samples\tsr\handlers.asm,       comment=^,                                    "tsr\handlers.asm",      RENAME, size=52047
+4: samples\tsr\install.asm,        comment=^,                                    "tsr\install.asm",       RENAME, size=10442
+4: samples\tsr\snap.asm,           comment=^,                                    "tsr\snap.asm",          RENAME, size=20954
+4: samples\tsr\snap.mak,           comment=^,                                    "tsr\snap.mak",          RENAME, size=3602
+4: samples\tsr\tsr.h,              comment=^,                                    "tsr\tsr.h",             RENAME, size=1735
+4: samples\tsr\tsr.inc,            comment=^,                                    "tsr\tsr.inc",           RENAME, size=3851
+
+[list  if_samples_and_nt  1]
+4: samples\ntsample\ntsample.txt,          DEST=S, comment="Samples text file - 32-bit code", "ntsample\ntsample.txt",              RENAME, size=4164
+4: samples\ntsample\szsearch\main.c,               comment="Sample file - 32-bit code",       "ntsample\szsearch\main.c",           RENAME, size=644
+4: samples\ntsample\szsearch\szsearch.asm,         comment="Sample file - 32-bit code",       "ntsample\szsearch\szsearch.asm",     RENAME, size=3186
+4: samples\ntsample\szsearch\main.mak,             comment="Sample file - 32-bit code",       "ntsample\szsearch\main.mak",         RENAME, size=551
+
+4: samples\ntsample\threads\asmthred.asm,          comment="Sample file - 32-bit code",       "ntsample\threads\asmthred.asm",      RENAME, size=4575
+4: samples\ntsample\threads\threads.c,             comment="Sample file - 32-bit code",       "ntsample\threads\threads.c",         RENAME, size=10305
+4: samples\ntsample\threads\threads.mak,           comment="Sample file - 32-bit code",       "ntsample\threads\threads.mak",       RENAME, size=365
+
+4: samples\ntsample\hello\hello.asm,               comment="Sample file - 32-bit code",       "ntsample\hello\hello.asm",           RENAME, size=942
+4: samples\ntsample\hello\hello.mak,               comment="Sample file - 32-bit code",       "ntsample\hello\hello.mak",           RENAME, size=341
+
+4: samples\ntsample\ntdll\asmdll.asm,              comment="Sample file - 32-bit code",       "ntsample\ntdll\asmdll.asm",          RENAME, size=2687
+4: samples\ntsample\ntdll\cmain.c,                 comment="Sample file - 32-bit code",       "ntsample\ntdll\cmain.c",             RENAME, size=2223
+4: samples\ntsample\ntdll\asmdll.def,              comment="Sample file - 32-bit code",       "ntsample\ntdll\asmdll.def",          RENAME, size=45
+4: samples\ntsample\ntdll\casmdll.mak,             comment="Sample file - 32-bit code",       "ntsample\ntdll\casmdll.mak",         RENAME, size=904
+
+4: include\asmthred.inc,       DEST=I, comment="Sample file - 32-bit code",                                         ROOT, size=1304
+4: include\threads.h,          DEST=I, comment="Sample file - 32-bit code",                                         ROOT, size=257
+
+
+
+[list  if_samples_and_win 1]
+4: samples\windll\sysinfo.asm, DEST=S, comment="Sample file - Windows DLL",      "windll\sysinfo.asm",    RENAME, size=13501
+4: samples\windll\sysinfo.def,     comment=^,                                    "windll\sysinfo.def",    RENAME, size=303
+4: samples\windll\sysinfo.mak,     comment=^,                                    "windll\sysinfo.mak",    RENAME, size=1867
+4: samples\windll\sysdata.asm,     comment=^,                                    "windll\sysdata.asm",    RENAME, size=14423
+4: samples\windll\sysdata.def,     comment=^,                                    "windll\sysdata.def",    RENAME, size=213
+4: samples\windll\sysdata.exe,     comment=^,                                    "windll\sysdata.exe",    RENAME, size=7168
+4: samples\windll\sysdata.h,       comment=^,                                    "windll\sysdata.h",      RENAME, size=319
+4: samples\windll\sysdata.ico,     comment=^,                                    "windll\sysdata.ico",    RENAME, size=766
+4: samples\windll\sysdata.mak,     comment=^,                                    "windll\sysdata.mak",    RENAME, size=2339
+4: samples\windll\sysdata.rc,      comment=^,                                    "windll\sysdata.rc",     RENAME, size=2031
+4: samples\windll\dll.inc,         comment=^,                                    "windll\dll.inc",        RENAME, size=2137
+4: samples\winclock\winclock.asm,  comment="Sample file - Windows clock",        "winclock\winclock.asm", RENAME, size=47982
+4: samples\winclock\winclock.def,  comment=^,                                    "winclock\winclock.def", RENAME, size=216
+4: samples\winclock\winclock.ico,  comment=^,                                    "winclock\winclock.ico", RENAME, size=766
+4: samples\winclock\winclock.mak,  comment=^,                                    "winclock\winclock.mak", RENAME, size=2147
+4: samples\winclock\winclock.rc,   comment=^,                                    "winclock\winclock.rc",  RENAME, size=32
+
+
+; list of files to search for single-file copy command
+[list search_files]
+{include list copy_always}
+{include list dos_extended}
+{include list dos_extended_windows}
+{include list if_dos}
+{include list if_windows}
+{include list if_compat_driver}
+{include list if_pwb}
+{include list if_brief}
+{include list if_docs}
+{include list if_docs_and_nt}
+{include list if_docs_and_windows}
+{include list if_pwb_and_docs}
+{include list if_pwb_and_windows}
+{include list if_mouse}
+{include list if_samples}
+{include list if_samples_and_nt}
+{include list if_samples_and_win}
+
+
+[list remove 1]
+1: mlx.exe,                DEST=N, comment="Obsolete assembler driver"                                            
+1: pwb.com,                DEST=N, comment="Obsolete PWB driver"
+
+
+
+;*********** more macros ***************
+[macro]
+;REQUIRED MACROS:
+LISTMORE  = "MORE"
+HARDHDR   = "Hard Drive "
+FLOPPYHDR = "Floppy Drive "
+; checkmark in listboxes
+CHKD = "* "
+
+; macros for Packing list generator (not used in Setup)
+DISK        = "DISK"
+DESC_HEADER = "Files                        Description"
+DESC_ULINES = "-----                        -----------"
+PLHEADER    = "Packing List for Microsoft Macro Assembler Version 6.11"
+
+
+;*********** menus ***************
+
+[menu mainc]
+; leave 2 spaces at front for checkmark
+"  Install the Microsoft Macro Assembler"
+"  Install the Macro Assembler using defaults"
+"  Run SETUP without installing any files"
+"  Special Note for CodeView users"
+"  Special Note for MASM v5.1 users"
+"  View important documentation notes (README.TXT)"
+"  View the packing list (PACKING.TXT)"
+"  Copy a file from the distribution disks"
+"  Exit SETUP"
+
+
+
+[menu yesno]
+"Yes"
+"No"
+
+[menu systems]
+"DOS/Windows & NT"
+"MS-DOS/Microsoft Windows"
+"Microsoft Windows NT"
+
+[menu copyanotherm]
+"Return to SETUP main menu"
+"Copy another file"
+"Exit SETUP"
+
+[menu anotherhd]
+"Install on a different hard disk"
+"Change my answers to SETUP questions"
+"Continue with installation on this disk"
+"Exit SETUP"
+
+[menu smallhd]
+"Change my answers to SETUP questions"
+"Continue with installation on this disk"
+"Exit SETUP"
+
+
+; required menus below this point
+[menu timestampm]
+"Continue without overwriting my file"
+"Replace my copy of the file"
+"Exit SETUP"
+
+[menu contorexit]
+"Continue"
+"Exit SETUP"
+
+[menu retry]
+"Try again"
+"Exit SETUP"
+
+[menu formatorretry]
+"Format the disk"
+"Try again (do not format)"
+
+[menu retryorignore]
+"Try again"
+"Continue despite the error"
+"Exit SETUP"
+
+[menu readonlyerrm]
+"Try to overwrite"
+"Continue without copying"
+"Exit SETUP"
+
+
+;***** colors *****
+[color]
+1=high white
+2=blue,white
+3=white,blue
+4=white,black
+
+
+;********** header and footer screens ************
+
+[screen header]
+{color white,blue}
+{at 2,1}
+Microsoft MASM 6.11 Setup
+{at 0,2}
+{line 60,205}
+;
+; footer screens
+;
+[screen exit]
+{clear 0,24,79,24}
+{color black, white}
+{at 67,24}
+CTRL+C=Exit
+;
+;
+[screen ent_exit]
+{clear 0,24,79,24}
+{color black, white}
+{at 2,24}
+ENTER=Continue
+{at 67,24}
+CTRL+C=Exit
+;
+;
+[screen ent_sel_exit]
+{clear 0,24,79,24}
+{color black, white}
+{at 2,24}
+ENTER=Continue
+{at 19,24}
+=Make Selection
+{at 67,24}
+CTRL+C=Exit
+;
+;
+[screen ent_f1_exit]
+{clear 0,24,79,24}
+{color black, white}
+{at 2,24}
+ENTER=Continue
+{at 39,24}
+F1=Additional Information
+{at 67,24}
+CTRL+C=Exit
+;
+;
+[screen ent_sel_f1_exit]
+{clear 0,24,79,24}
+{color black, white}
+{at 2,24}
+ENTER=Continue
+{at 19,24}
+=Make Selection
+{at 39,24}
+F1=Additional Information
+{at 67,24}
+CTRL+C=Exit
+;
+;
+[screen help_footer]
+{clear 0,24,79,24}
+{color white, blue}
+{at 2,24}
+ESC=Return to SETUP
+{at 30,24}
+PgDn=Next Screen
+{at 55,24}
+PgUp=Previous Screen
+;
+;
+;**********    required screens ************
+;
+[screen helpframe]
+{color black, white}
+{at 2,1}
+^2Additional Information^0
+{at 0,2}
+{line 60,205,blue,white}
+{include screen help_footer}
+;
+;
+[screen mcopying]
+{help nohelp}
+{clear 0,8,80,23}
+{At 10,12}
+SETUP is copying %SPATH%SFILE
+              to %DPATH%DFILE.
+
+There are %NUM files left to copy.
+{include screen exit}
+;
+;
+[screen badmacro]
+Predefined macro "%SECTION" is missing in SETUP.INF
+;
+;
+[screen insdiskpath]
+{help nohelp}
+{include screen header}
+{At 5,8}
+SETUP can't find the file %SFILE.
+
+Please type the drive and directory where this file can be found
+and press ENTER.
+
+You can specify a floppy drive or a hard drive.
+
+{input 10,60,1}
+{include screen ent_exit}
+;
+;
+[screen insdiskpath2]
+{help nohelp}
+{include screen header}
+{At 5,8}
+SETUP can't find the file %SFILE in the directory you specified.
+Please try again now, or exit, find a copy of the file, and rerun
+SETUP later.
+
+Please enter the drive and directory where this file is located
+and press ENTER. You can specify a floppy drive or a hard drive.
+
+{input 10,60,1}
+{include screen ent_exit}
+;
+;
+[screen insdisknopath]
+{help nohelp}
+{include screen header}
+{At 5,8}
+Please insert the disk labeled '%DISKNAME'
+in drive %DRIVE and press ENTER.
+
+{input 15,20,5}
+{include menu contorexit}
+{include screen ent_sel_exit}
+;
+;
+[screen badsdisk]
+{help nohelp}
+{include screen header}
+{At 5,8}
+SETUP can't read the disk in drive %DRIVE. Please be sure the
+correct disk is inserted and the drive door is closed.
+
+{input 15,20,5}
+{include menu contorexit}
+{include screen ent_sel_exit}
+;
+;
+[screen wrongdisk]
+{help nohelp}
+{include screen header}
+{At 5,8}
+Setup cannot find the file ^1%SFILE^0 on this disk.
+Please insert the disk labeled '%DISKNAME'
+in drive %DRIVE and press ENTER.  If the correct disk
+is in the drive, please contact Microsoft Product 
+Support Services for assistance.
+
+{input 15,35,5}
+{include menu contorexit}
+{include screen ent_sel_exit}
+;
+;
+[screen badddisk]
+{help nohelp}
+{include screen header}
+{At 5,8}
+SETUP can't read the disk in drive %DRIVE.
+
+{input 15,30,4}
+{include menu formatorretry}
+{include screen ent_sel_exit}
+;
+;
+[screen readerr]
+{help nohelp}
+{include screen header}
+{At 5,8}
+An error occurred while reading the file %SFILE.
+
+{input 15,35,5}
+; inserts menu retry or menu retryorignore
+{include screen ent_sel_exit}
+;
+;
+[screen writeerr]
+{help nohelp}
+{include screen header}
+{At 5,8}
+An error occurred while writing the file
+%DPATH%DFILE.
+
+{input 15,35,5}
+; inserts menu retry or menu retryorignore
+{include screen ent_sel_exit}
+;
+;
+[screen createerr]
+{help nohelp}
+{include screen header}
+{At 5,8}
+An error occurred while creating the file
+%DPATH%DFILE.
+
+{input 15,35,5}
+; inserts menu retry or menu retryorignore
+{include screen ent_sel_exit}
+;
+;
+[screen renameerr]
+{help nohelp}
+{include screen header}
+{At 5,8}
+An error occurred while renaming the file
+%SPATH%SFILE to %DFILE.
+
+{input 15,35,5}
+; inserts menu retry or menu retryorignore
+{include screen ent_sel_exit}
+;
+;
+[screen createdirerr]
+{help nohelp}
+{include screen header}
+{At 5,8}
+An error occurred while creating the directory
+%DPATH.
+
+{input 15,35,5}
+; inserts menu retry or menu retryorignore
+{include screen ent_sel_exit}
+;
+;
+[screen timestamperr]
+{help nohelp}
+{include screen header}
+{At 5,8}
+The version of the file %SFILE on your disk is newer than the
+one supplied with MASM 6.11.
+
+You can continue the installation process without copying this
+file, or you can overwrite your copy of the file.
+
+SETUP suggests that you not overwrite this file. If you decide
+later that you want the version supplied with MASM 6.11, rename
+your existing file and use SETUP to copy the new version.
+
+{input 15,45,5}
+{include menu timestampm}
+{include screen ent_sel_exit}
+;
+;
+; required screens not used by MASM
+[screen nonvital]
+{clear 0,0,0,0}
+[screen pathtoolong]
+; screen used by floppy-to-floppy setup only
+[screen insnewdisk]
+;
+;
+[screen readonlyerr]
+{help nohelp}
+{include screen header}
+{at 5,8}
+SETUP is trying to copy to the read-only file
+%DPATH%DFILE on your hard disk.
+
+You can try to overwrite the file, skip the copy if you are sure
+your file is correct, or exit SETUP and delete your file.
+
+{input 15,30,5}
+{include menu readonlyerrm}
+{include screen ent_sel_f1_exit}
+;
+;
+[screen readme_frame]
+{help nohelp}
+{at 0,23}
+{line 80,220}
+   PgDn=Next screen        PgUp=Previous screen        ESC=Exit README.TXT
+;
+;
+[screen packing_frame]
+{help nohelp}
+{at 0,23}
+{line 80,220}
+   PgDn=Next screen        PgUp=Previous screen        ESC=Exit PACKING.TXT
+;
+;
+; ************ MASM SCREENS *****************
+;
+[screen nohelp]
+{color black, white}
+{at 10,10}
+SETUP has no additional information on this topic.
+
+Press ESC to return to SETUP.
+;
+;
+[screen welcome]
+{help nohelp}
+{include screen header}
+{at 5,4}
+%COPYRIGHT
+
+Welcome to the SETUP program for MASM 6.11.
+
+If you have not already read the information on SETUP in
+"Getting Started," please do so before continuing. This 
+manual contains important information about using SETUP.
+
+The files on the distribution disks are compressed, so you must
+use SETUP to install them. You can also use SETUP to uncompress
+and copy a single file or to view the documentation notes or
+packing list.
+
+If you make a mistake, you can type CTRL+C at any time to quit and
+start over. SETUP never erases files from the distribution disks.
+
+Press ENTER to continue or CTRL+C to exit.
+{include screen ent_exit}
+;
+;
+[screen mainmenu]
+{help mainmenu_h}
+{include screen header}
+{at 35,1}
+^1Main Menu^0
+{at 5,5}
+If this is the first time you have run SETUP, press ENTER now
+to install MASM. Or press F1 for more information.
+
+{input 10,55,11}
+{include menu mainc }
+{at 5}
+
+Use the ARROW (,) keys to make the selection, then press ENTER.
+{include screen ent_sel_f1_exit}
+;
+;
+
+[screen mainmenu_h]
+{help mainmenu_h2}
+{color black, white}
+{at 5,4}
+SETUP will prompt you for the information it needs. If you're
+unsure of the proper reply for any of the questions, consider
+the defaults a good place to start. Before SETUP installs any
+files, it will give you the opportunity to change your answers.
+
+If you later find you prefer other choices, you can run SETUP again.
+
+If you would like to see SETUP's questions before actually
+installing MASM, select
+    ^2Run SETUP without installing any files^0
+from the main menu. SETUP will prompt you through the questions
+but will not copy any files.
+
+If you would like to have MASM installed using the most common
+answers to all of SETUP's questions, choose
+    ^2Install the Macro Assembler using defaults^0
+from the main menu. Before SETUP installs any files, it will give
+you the opportunity to change any of the answers.
+;
+;
+[screen mainmenu_h2]
+{color black, white}
+{at 5,4}
+SETUP asks for information in two ways. For some questions, you
+will be given a list of choices, which will look like:
+{at 20}
+{box 15,4,3,white,blue}
+{at 21}
+^2  Choice One ^0
+^3  Choice Two ^0
+
+{at 5}
+You can use the ARROW keys (,) to move the highlight. If the
+word MORE appears at the bottom of the box, it means there are
+additional choices; press the down arrow key until you've seen them
+all. When the choice you want is highlighted, press ENTER to continue.
+
+SETUP also asks you to type directory or file names. You will be
+given a field which looks like:
+       ^4 C:\MASM611\BIN                            ^0
+You can use the BACKSPACE key to erase characters, the ARROW keys to
+move the highlight around in the text, and the HOME and END keys to move
+to the beginning and end of the text. When the directory or file name
+is correct, press ENTER to continue.
+;
+;
+[screen needhd]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Hard Disk Needed^0
+{at 5,6}
+SETUP cannot find a hard disk attached to your system. You need a
+hard disk to install MASM 6.11.
+
+Some removable harddisk systems look like floppies to SETUP, but
+you can still install MASM 6.11 on them. If you have a removable
+hard disk or believe SETUP made an error, press ENTER to continue
+with SETUP.
+
+If you do not have a hard disk, press CTRL+C now to exit SETUP, and
+run SETUP again after you have installed a hard disk.
+
+
+Press ENTER to continue or CTRL+C to exit.
+{include screen ent_exit}
+;
+;
+[macro]
+OLDMASM = "OLDMASM.EXE"
+
+[screen codeview]
+{help nohelp}
+{include screen header}
+{at 35, 1}
+^1CodeView 4.01^0
+{At 5,5}
+^1MS-DOS/Microsoft Windows Only.^0
+
+CodeView 4.01 includes many enhancements over version 3, including
+the ability to debug C and C++ code generated by Microsoft C/C++
+version 7.0, and the ability to debug from a remote machine.  More 
+information on CodeView is in the Environment and Tools manual, and
+in the file CV.TXT, in the directory in which you installed MASM.
+
+CodeView 4.01 has two important limitations which affect MASM users.  
+First, CodeView 4.01 does not support single stepping through code 
+which uses the high word of the 32-bit registers on 80386 and 80486 
+CPU's, if a DPMI server such as Microsoft Windows is active.  Microsoft 
+recommends exiting Windows and using a VCPI server such as EMM386 to 
+run CodeView if you encounter this limitation.  Second, CodeView 
+4.01 does not support debugging .COM files.  Microsoft recommends 
+recompiling your project as a small model .EXE for debugging purposes.
+
+Press ENTER to continue, or press CTRL+C to exit SETUP.
+{include screen ent_exit}
+;
+;
+[screen special_note]
+{help nohelp}
+{include screen header}
+{at 28, 1}
+^1Special Note for MASM v5.1 users^0
+{At 5,5}
+There are differences between versions 5.1 and 6.11.
+
+Use the new MASM.EXE driver to assemble your existing MASM code. The 
+MASM driver converts old-style MASM switches to their ML equivalents,
+adds the ^1/Zm^0 option to maximize compatibility, and calls the ML
+assembler. The MASM driver will print the equivalent ML command line.
+You can use this line to use the ML assembler directly.
+
+If you install the new MASM.EXE driver in the same location as 
+MASM 5.1, SETUP will rename your old version to %OLDMASM.
+
+^1Appendix A of the Programmer's Guide^0 describes the differences 
+between MASM 6.11 and MASM 5.1, and explains how to update code to
+work with MASM 6.11.
+
+When you are ready to remove the ^1/Zm^0 option and use the full power
+of the ML assembler, read ^1Appendix A Section 2.2 of the Programmer's
+Guide^0.
+
+Press ENTER to continue, or press CTRL+C to exit SETUP.
+{include screen ent_exit}
+
+;^1Please read Appendix A of the Programmer's Guide.^0  This
+;appendix describes the differences between previous releases
+;of MASM and version 6.11, including how to make any changes.
+;
+;To maximize compatibility with previous releases use the ^1-Zm^0
+;switch with ML.EXE.
+;
+;
+;
+[screen windows]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Microsoft Windows Files^0
+{At 5,5}
+The Macro Assembler will run under both Microsoft Windows and
+MS-DOS.  Many of the files included with the Macro Assembler are
+only necessary if you use Microsoft Windows or if you are 
+writing software to run under Microsoft Windows.  If you want to
+conserve disk space, and you do not use Microsoft Windows, you
+should not install these files.
+
+Install files for Microsoft Windows?
+{input 15,10,4}
+{include menu yesno}
+{include screen ent_sel_exit}
+;
+;
+[screen pwb]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Programmer's WorkBench^0
+{At 5,4}
+^1MS-DOS/Microsoft Windows Only.^0
+{At 5,6}
+The Programmer's WorkBench (PWB) is an integrated development 
+environment based on a full-screen editor with mouse support and
+multiple window capability.
+
+You can edit, build, run, and debug your program without leaving
+PWB, as well as access online help.
+
+For more information about PWB, see the "Environment and Tools"
+manual.
+
+Install PWB?
+{input 15,10,4}
+{include menu yesno}
+{include screen ent_sel_exit}
+;
+;
+[screen brief]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Brief Compatibility^0
+{At 5,5}
+PWB can be customized with alternate key assignments and macros.
+A set of key assignments and macros that emulate the Brief editor
+can be added to the TOOLS.INI file. If you do not install Brief
+compatibility, the default key assignments are used.
+
+If you specify Brief compatibility, the Brief macros and key
+assignments are appended to your TOOLS.INI file. If you do not
+have a TOOLS.INI file, one is created by SETUP.
+
+For more information about PWB's key assignments and macros, see
+the "Environment and Tools" manual.
+
+Install Brief compatibility?
+{input 15,10,4}
+{include menu yesno}
+{include screen ent_sel_exit}
+;
+;
+[screen compatdriver]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1MASM.EXE Utility^0
+{At 5,4}
+MASM 6.11 provides a command-line driver (ML.EXE) that assembles
+and links programs with a single command. PWB automatically executes
+ML, or you can manually execute it from the command line. SETUP
+always installs ML.EXE.
+
+If you want to use existing MASM 5.1 makefiles and batch files, you
+can install MASM.EXE, a small utility that translates MASM 5.1
+commands into ML.EXE commands and then invokes the ML.EXE driver.
+
+Using MASM.EXE also sets certain switches, so you may want to examine
+Appendix A in the "Macro Assembler Programmer's Guide," before using
+the MASM.EXE utility.
+
+Install the MASM.EXE utility?
+{input 15,10,4}
+{include menu yesno}
+{include screen ent_sel_exit}
+;
+;
+[screen documentation]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Help Files^0
+{At 5,4}
+Several documentation and online help files are included with
+this release.  %READMEFILE contains important information about
+this version of MASM: additions/corrections to the printed
+manuals, information on any known bugs, and changes to the
+assembler since the last release.
+
+We recommend that you copy the help files and read %READMEFILE.
+
+Copy the help files?
+{input 15,10,4}
+{include menu yesno}
+{include screen ent_sel_exit}
+;
+;
+[screen samples]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Sample Programs^0
+{At 5,5}
+Several sample assembler programs are included with the Macro 
+Assembler.  These programs demonstrate features new to MASM 6.11.
+
+^1Some of the samples require development tools not included with
+the Macro Assembler.^0  For instance, to build the Windows Clock 
+sample program you must have the Microsoft Windows Software 
+Development Kit.  More information on the samples, and on these
+requirements, is in the file SAMPLES.TXT.  Setup will copy this
+file to the directory you specify for the sample code.
+
+Copy the sample programs?
+{input 15,10,4}
+{include menu yesno}
+{include screen ent_sel_exit}
+;
+;
+[screen mouse]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Mouse Driver^0
+{At 5,4}
+^1MS-DOS/Microsoft Windows Only.^0
+
+{At 5,6}
+If you use a Microsoft Mouse (or a 100%%-compatible pointing
+device), you should use the most recent version of the MOUSE.COM
+mouse driver. See readme.txt file for more information.
+
+To install the mouse driver provided with MASM 6.11, the command
+MOUSE must be executed from AUTOEXEC.BAT or the command line
+before using Microsoft CodeView, PWB, or QuickHelp. MOUSE.COM
+should be used instead of the MOUSE.SYS device driver provided
+with older versions of Microsoft products.
+
+If you do not use a mouse, you need not copy this file.
+
+Copy the Microsoft Mouse driver?
+{input 15,10,4}
+{include menu yesno}
+{include screen ent_sel_exit}
+;
+;
+[screen destdrive]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Destination Drive^0
+{At 5,5}
+SETUP has found more than one hard drive attached to your system.
+You should select the drive on which you will be installing MASM 6.11.
+
+This drive will be the default when SETUP asks you to specify
+directory names. If you want to divide MASM 6.11's components
+among different hard drives, you will be able to change the drive
+letter in the paths.
+
+Please select the destination drive:
+{input 15,20,5}
+; list of drives (built on the fly) goes here
+{include screen ent_sel_exit}
+;
+;
+[screen typedir]
+If the directory does not exist, it will be created.
+
+SETUP proposes the following directory:
+
+{input 5,55,1}
+
+If you want to install these files in a different directory, use
+the backspace key to erase the current selection, then type the
+directory name. When the correct directory is displayed, press
+ENTER.
+{include screen ent_exit}
+;
+;
+[screen dirbin]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Executable Files^0
+{at 5,4}
+Please specify the directory in which to place the executable files.
+
+{include screen typedir relative}
+;
+;
+[screen dirbinb]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1DOS Executable Files^0
+{at 5,4}
+Please specify the directory in which to place the MS-DOS
+executable files.
+
+{include screen typedir relative}
+;
+;
+[screen dirbinNT]
+{help nohelp}
+{include screen header}
+{at 32,1}
+^1Windows NT Executable Files^0
+{at 5,4}
+Please specify the directory in which to place the NT 
+executable files.
+
+^1We recommend that you install MASM in a separate directory from 
+your other development tools (e.g. Visual C++).^0
+
+{include screen typedir relative}
+;
+;
+[screen dirlib]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Library Files^0
+{at 5,5}
+Please specify the directory in which to place the library files 
+for MASM.
+
+{include screen typedir relative}
+;
+;
+[screen dirinclude]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Include Files^0
+{at 5,5}
+Please specify the directory in which to place the include files
+for MASM.
+
+{include screen typedir relative}
+;
+;
+[screen dirinit]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Initialization Files^0
+{at 5,5}
+Please specify the directory in which to place the initialization
+files for PWB and CodeView.
+
+{include screen typedir relative}
+;
+;
+[screen dirhelp]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Help Files^0
+{at 5,5}
+Please specify the directory in which to place the help files for
+the online help system.  Help files for MASM and associated tools
+are placed here.
+
+{include screen typedir relative}
+;
+;
+[screen dirsamples]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Sample Files^0
+{at 5,5}
+Please specify the directory in which to place MASM 6.11 sample
+files.
+
+{include screen typedir relative}
+;
+;
+[screen dirtmp]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Temporary Files^0
+{at 5,5}
+Please specify the directory in which to place the temporary files
+created by the utilities provided. The files that are placed here
+are for temporary use only; they will be removed when they are no
+longer needed.
+
+{include screen typedir relative}
+;
+;
+[macro]
+; strings used to init the confirm listbox
+INSTALL    = "Install "
+NOINSTALL  = "Do not install "
+COPY       = "Copy "
+NOCOPY     = "Do not copy "
+INSTALLFOR = "Install for "
+
+NOCHANGES     = "NO CHANGES"
+
+; Do not change the orther of the following 3 tokens
+INSTALLBOTH   = "DOS/Windows & NT"
+INSTALLDOS    = "MS-DOS/Microsoft Windows"
+INSTALLWINNT  = "Microsoft Windows NT"
+
+INSTALLWINDOWS= "Microsoft Windows tools"
+INSTALLPWB    = "Microsoft Programmer's WorkBench"
+INSTALLBRIEF  = "Brief compatibility"
+INSTALLDRIVER = "the MASM 5.1-compatible driver"
+INSTALLDOCS   = "documentation files"
+INSTALLSAMPLES= "sample programs"
+INSTALLMOUSE  = "Microsoft Mouse software"
+
+DIRFOREXE     = "Directory for executable files:  "
+DIRFORREAL    = "Directory for DOS executable files:  "
+DIRFORNT      = "Directory for NT executable files:  "
+DIRFORLIB     = "Directory for library files:  "
+DIRFORINCLUDE = "Directory for include files:  "
+DIRFORINIT    = "Directory for initialization files:  "
+DIRFORHELP    = "Directory for help files:  "
+DIRFORSAMPLES = "Directory for sample files:  "
+DIRFORTMP     = "Directory for temporary files:  "
+
+[screen confirm]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Confirm Your Choices^0
+{at 5,4}
+If you are satisfied with your responses, press ENTER to continue.
+Otherwise, use the ARROW (,) keys to select the option to change
+and press ENTER. Your current response is the new default.
+{input 2,77,17}
+; menu is built on the fly
+{include screen ent_sel_exit}
+;
+;
+[screen installing]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Installing^0
+{at 0,5}
+{center on}
+Installing MASM 6.11...
+{center off}
+{include screen exit}
+;
+;
+[screen freespace]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Not Enough Disk Space^0
+{at 5,5}
+There isn't enough free disk space on drive %DRIVE to install
+MASM with the options you chose. You need another %NUM K of
+disk space. If SETUP runs out of disk space, MASM may not be
+installed properly.
+
+You can install fewer optional files, or you can delete existing
+files and run SETUP again. If you believe SETUP misread the free
+space on your hard disk, you can continue.
+
+Please select one of the following:
+{input 15,46,6}
+; menu 'anotherhd' is used if > 1 hard disk, else menu 'smallhd' goes here
+{include screen ent_sel_exit}
+;
+;
+; user only sees this screen if running off hard disk and > 1 floppy drive found
+[screen single_src_drive]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Copy Files^0
+{At 5,5}
+In order to copy files from the distribution disks, SETUP needs
+to know in which drive you will insert the disks.
+
+You will be prompted to insert the correct disks when SETUP
+needs them.
+
+Please select the source of the distribution disks:
+{input 15,20,5}
+; list of floppy drives (built on the fly) goes here
+{include screen ent_sel_exit}
+;
+;
+[screen single_copy_fname]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Enter File Name^0
+{at 5,5}
+Enter the base name, without drive or path designation, of the
+file you want to copy. You can use wildcards (*, ?) to specify
+more than one file.
+
+You can view the packing list, which has a short description of
+each file on the distribution disks, from SETUP's main menu. To
+return to SETUP's main menu, press ENTER without typing a name.
+
+Please enter the name of the file to copy:
+
+{input 25,20,1}
+
+{at 5}
+Do not give a drive or directory name with the file name. Use
+the backspace key to erase characters. You can use wildcards to
+specify more than one file.
+
+When the file name is correct, press ENTER.
+{include screen ent_exit}
+;
+;
+[screen single_no_match]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Enter File Name^0
+{at 5,4}
+^1The file name you gave does not match any file on the
+distribution disks.^0
+
+The packing list contains a complete list of files on the
+distribution disks. The packing list can be viewed from SETUP's
+main menu. Refer to this list to determine the correct name of
+the file you want to copy. To return to SETUP's main menu, press
+ENTER without typing a name.
+
+Please enter the name of the file to copy:
+
+{input 25,20,1}
+
+{at 5}
+Do not give a drive or directory name with the file name. Use
+the backspace key to erase characters. You can use wildcards to
+specify more than one file.
+
+When the file name is correct, press ENTER.
+{include screen ent_exit}
+;
+;
+[screen multiple_files]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Choose Files^0
+{at 5,4}
+There is more than one file on the MASM 6.11 distribution disks
+with the name you gave. You may copy any number of the files.
+Below are the packing list descriptions of each file.
+
+Use the ARROW (,) keys to select a file; then press SPACEBAR
+to mark it. Repeat until you have marked all the files you want to
+copy. When you are ready to copy the files, press ENTER.
+
+{input 5,70,11}
+; listbox is built on the fly
+{include screen ent_sel_exit}
+;
+;
+[screen single_copy_dest]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Enter Path^0
+{at 5,5}
+The packing list description of this file is:
+    %SFILE -- %SECTION
+
+Enter the full path name (drive and directory) where you
+want the selected file to be copied. Do not enter the name of
+the file, just the name of the directory.
+
+Please enter the drive and directory to which %SFILE should
+be copied:
+
+{input 10,60,1}
+
+{at 5}
+Use the backspace key to erase characters.
+
+When the drive and directory are correct, press ENTER.
+{include screen ent_exit}
+;
+;
+[screen mult_copy_dest]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Enter Path^0
+{at 5,5}
+Enter the full path name (drive and directory) where you
+want the selected files to be copied. Do not enter the name of
+the files, just the name of the directory.
+
+Please enter the drive and directory where the files should
+be copied:
+
+{input 10,60,1}
+
+{at 5}
+You can use the backspace key to erase characters.
+
+When the correct drive and directory are displayed,
+press ENTER.
+{include screen ent_exit}
+;
+;
+[screen single_copying]
+{help nohelp}
+{include screen header}
+{at 5,5}
+Copying...
+
+{include screen exit}
+;
+;
+; notice that this screen is designed to overlay screen single_copying
+[screen single_copy_another]
+{help nohelp}
+{include screen header}
+{at 5,5}
+Copying... finished.
+
+Do you want to copy another file from the distribution disk?
+{input 15,35,5}
+{include menu copyanotherm}
+{include screen ent_sel_exit}
+;
+;
+[screen installworked]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Installation Complete^0
+{At 5,5}
+SETUP has successfully installed MASM 6.11.
+
+In addition to copying MASM 6.11 onto your hard drive,
+SETUP has created several new files.  The following
+screens will tell you how to use these files.
+
+There are differences between versions 5.1 and 6.11.
+If you will be assembling code written for MASM 5.1,
+please choose the "Special Note for MASM v5.1 users"
+from the SETUP main menu.  Additional information is
+available in Appendix A of the Programmer's Guide.
+
+Press ENTER to continue, or press CTRL+C to exit SETUP.
+{include screen ent_exit}
+;
+;
+[macro]
+NUMERRORS = "0"
+NUMFILES  = "0"
+
+[screen installerrs]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Installation Errors^0
+{At 5,6}
+SETUP has not completely installed MASM 6.11. There were %NUMERRORS errors
+detected while copying files, and %NUMFILES files were not installed
+because of those errors.
+
+MASM may not work correctly if it is not properly installed.
+Please run SETUP again after correcting the problems.
+
+
+Press ENTER to continue, or press CTRL+C to exit SETUP.
+{include screen ent_exit}
+;
+;
+[screen mlx_on_path]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Obsolete Files^0
+{At 5,6}
+WARNING:
+
+SETUP has found the file MLX.EXE in the PATH.  This file is
+obsolete, and will not operate correctly with MASM 6.11.
+SETUP recommends deleting this file or removing it from
+the PATH.
+
+Please press ENTER to continue with SETUP.
+{include screen ent_exit}
+;
+;
+[screen mult_linkers]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Multiple Linkers^0
+{At 5,6}
+WARNING:
+
+SETUP has found multiple linkers in the PATH. Be sure to use
+the LINK.EXE that comes with MASM 6.11 for linking programs
+assembled with MASM 6.11.
+
+Please press ENTER to continue with SETUP.
+{include screen ent_exit}
+;
+;
+[macro]
+UNKNOWN     = "of unknown type and version"
+ISVERSION   = "version "
+FOR         = " for "
+LINKDOS     = "DOS"
+LINKOS2     = "OS2"
+INCREMENTAL = "Incremental"
+LINEAR_386  = "Linear-386"
+AND         = " and "
+MDIRBIN     = ""
+
+OLDLINKVERS = ""
+NEWLINKVERS = ""
+
+[screen which_linker]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Overwrite Linker^0
+{At 5,5}
+The version of LINK.EXE that you have in %MDIRBIN
+
+is not the version supplied with MASM 6.11.
+
+  Your existing linker is %OLDLINKVERS.
+
+  The new linker is %NEWLINKVERS.
+
+Do you want to overwrite your copy of LINK.EXE?
+{input 15,10,4}
+{include menu yesno}
+{include screen ent_sel_exit}
+;
+;
+[macro]
+MDIRBINP = ""
+MDIRINIT = ""
+NEWAUTOEXEC = "NEW-VARS.BAT"
+NEWCONFIG = "NEW-CONF.SYS"
+NEWSYSINI = "NEW-SYS.INI"
+TOOLSPRE = "TOOLS.PRE"
+;
+[screen newfiles_real]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Environment Settings^0
+{At 5,5}
+SETUP has created the following files to help you configure
+your system for using MASM 6.11:
+
+^1%MDIRBIN%NEWAUTOEXEC^0 
+is a sample AUTOEXEC.BAT file that sets environment variables for 
+use by MASM 6.11. This file can be run from the command line to set 
+the environment before running MASM, or it can be merged with an 
+existing AUTOEXEC.BAT.
+
+^1%MDIRBIN%NEWCONFIG^0 
+is a sample file that contains commands that should be copied into 
+your CONFIG.SYS file.  If these commands are already set in your 
+CONFIG.SYS file, you should use values at least as large as those 
+in the sample file in your CONFIG.SYS file.
+{include screen ent_exit}
+;
+;
+
+[screen newfiles_NT]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Environment Settings^0
+{At 5,5}
+SETUP has created the following file to help you configure
+your system for using MASM 6.11:
+
+^1%MDIRBIN%NEWAUTOEXEC^0 
+is a sample AUTOEXEC.BAT file that sets environment variables for 
+use by MASM 6.11. This file can be run from the command line to set 
+the environment before running MASM, or it can be merged with an 
+existing AUTOEXEC.BAT.
+
+;
+;
+
+
+
+
+[screen newfiles_win]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1SYSTEM.INI Settings^0
+{At 5,5}
+SETUP has created the following file to help you configure
+your system for using MASM 6.11 with Microsoft Windows:
+
+^1%MDIRBIN%NEWSYSINI^0 
+is a sample file that contains commands that may be required
+in the [386Enh] section of the SYSTEM.INI file in your 
+Windows directory. See the directions in ^1%MDIRBIN%NEWSYSINI^0.
+
+More information on configuring your system can be found in
+the Getting Started manual.
+
+{include screen ent_exit}
+;
+;
+[screen tools_pre]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Sample PWB Settings^0
+{At 5,5}
+SETUP has created the following file to help you configure
+your system for using MASM 6.11:
+
+^1%MDIRINIT%TOOLSPRE^0 
+is a sample file that contains various settings used to 
+initialize the Programmer's WorkBench (PWB) utility.
+
+In most cases, you should rename this file to TOOLS.INI or merge
+the contained directives into an existing file of that name.
+
+More information on configuring PWB can be found in the
+Environment and Tools manual.
+{include screen ent_exit}
+;
+;
+[screen himem]
+{help nohelp}
+{include screen header}
+{at 35,1}
+^1Memory Utilities^0
+{At 5,5}
+SETUP has copied the files HIMEM.SYS, RAMDRIVE.SYS, and SMARTDRV.EXE
+to %MDIRBIN.
+
+HIMEM.SYS allows you to debug large programs by using extended 
+memory.  The %NEWCONFIG file contains a sample entry showing how to 
+install HIMEM.SYS in your CONFIG.SYS file.
+
+To avoid possible conflicts, use RAMDRIVE.SYS for memory disk
+emulation and SMARTDRV.EXE for disk caching.  Other disk-emulation
+and disk-caching programs may conflict with HIMEM.SYS.
+
+More information about these three utilities and about configuring
+your machine's memory is in the Getting Started manual.
+
+{include screen ent_exit}
+;
+;
+[screen systemsconf]
+{help nohelp}
+{include screen header}
+{at 31,1}
+^1System Configuration^0
+{At 5,5}
+The Macro Assembler now runs under Microsoft Windows NT and 
+MS-DOS/Microsoft Windows.
+
+Note: Files installed on the Microsoft Windows NT File System (NTFS)
+will only run on Microsoft Windows NT. Files installed on the MS-DOS
+(FAT) File System will run on MS-DOS, Microsoft Windows, or Microsoft
+Windows NT.
+
+^1Choose the operating system you will use for
+running the Microsoft Macro Assembler.^0
+
+{input 15,30,5}
+{include menu systems}
+{include screen ent_sel_exit}
+;
+;
+
+
